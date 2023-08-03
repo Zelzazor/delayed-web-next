@@ -1,15 +1,21 @@
 {
   "name": "delayed-web-next",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a tiny and dependency-free web framework for Node.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js",
+    "default": "./dist/cjs/index.js"
+  },
+  "types": "dist/esm/index.d.ts",
   "files": [
     "/dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.esm.json; tsc -p tsconfig.cjs.json",
     "lint": "eslint src --ext .ts",
     "start:dev": "ts-node-dev --respawn --transpile-only ./example/index.ts"
   },
