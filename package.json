@@ -1,6 +1,6 @@
 {
   "name": "delayed-web-next",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a tiny and dependency-free web framework for Node.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
