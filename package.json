@@ -1,16 +1,23 @@
 {
   "name": "delayed-web-next",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This is a tiny and dependency-free web framework for Node.js",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "/dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && esbuild --outdir=dist --platform=node --format=cjs src/*.ts && esbuild --out-extension:.js=.mjs --outdir=dist --platform=node --format=esm src/*.ts src/**/*",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "lint": "eslint src --ext .ts",
     "start:dev": "ts-node-dev --respawn --transpile-only ./example/index.ts"
   },
@@ -27,10 +34,10 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
-    "esbuild": "^0.18.17",
     "eslint": "^8.46.0",
     "prettier": "^3.0.1",
     "ts-node-dev": "^2.0.0",
+    "tsup": "^7.2.0",
     "typescript": "^5.1.6"
   }
 }
